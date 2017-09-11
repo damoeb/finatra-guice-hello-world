@@ -6,12 +6,12 @@ import com.twitter.finatra.http.Controller
 
 
 class HelloWorldController @Inject()(
-  helloService: HelloService)
+  helloWorldService: HelloWorldService)
   extends Controller {
 
   get("/hi") { request: Request =>
     info("hi")
-    helloService.sayHello(request.params.getOrElse("name", "unnamed"))
+    helloWorldService.sayHello(request.params.getOrElse("name", "unnamed"))
   }
 
   post("/hi") { helloRequest: HelloRequest =>

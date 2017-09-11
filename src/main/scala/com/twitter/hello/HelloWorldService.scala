@@ -2,11 +2,11 @@ package com.twitter.hello
 
 import javax.inject.Singleton
 
-trait AService {
+trait HelloWorldService {
   def sayHello(name:String):String
 }
 
 @Singleton
-class HelloService extends AService {
+class HelloWorldServiceImpl extends HelloWorldService {
   override def sayHello(name: String): String = "Hello " + name
 }
