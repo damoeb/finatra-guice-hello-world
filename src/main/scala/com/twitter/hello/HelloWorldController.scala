@@ -1,13 +1,17 @@
 package com.twitter.hello
 
+import com.google.inject.Inject
 import com.twitter.finagle.http.Request
 import com.twitter.finatra.http.Controller
 
-class HelloWorldController extends Controller {
+
+class HelloWorldController @Inject()(
+  helloService: HelloService)
+  extends Controller {
 
   get("/hi") { request: Request =>
     info("hi")
-    "Hello " + request.params.getOrElse("name", "unnamed")
+    helloService.sayHello(request.params.getOrElse("name", "unnamed"))
   }
 
   post("/hi") { helloRequest: HelloRequest =>

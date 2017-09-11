@@ -17,7 +17,7 @@ class HelloWorldServer extends HttpServer {
    */
   override val disableAdminHttpServer = true
 
-  override def modules = Seq(Slf4jBridgeModule)
+  override def modules = Seq(Slf4jBridgeModule, HelloModule)
 
   override def configureHttp(router: HttpRouter) {
     router
